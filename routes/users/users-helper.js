@@ -5,7 +5,7 @@ function getUsers() {
 }
 
 function getUserById(id) {
-    return db('projects')
+    return db('users')
         .where({id})
 }
 
@@ -27,6 +27,16 @@ function updUser(id, body) {
         .then(res => {
             const id = res[0]
             return db('users')
+                .where({id})
+        })
+}
+
+function delUser(id) {
+    db('users')
+        .where({id})
+        .del()
+        .then(res => {
+            return db('users')
         })
 }
 
@@ -34,5 +44,6 @@ module.exports = {
     getUserById,
     getUsers,
     addUser,
+    updUser,
     delUser,
 }

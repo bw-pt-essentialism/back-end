@@ -21,7 +21,7 @@ exports.up = function(knex) {
                     .notNullable()
                     .unique()
                 prjt.string('description')
-                prjt.integer()
+                prjt.integer('user_id')
                     .unsigned()
                     .references('id')
                     .inTable('users')
