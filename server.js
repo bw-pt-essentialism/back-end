@@ -2,9 +2,10 @@ const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 
-// const authenticate = require('./auth/authenticate-middleware.js') -- to be built
-// const authRouter = require('./auth/auth-router.js')
-// const usersRouter = require('./users/users-router.js')
+// // const authenticate = require('./routes/auth/authenticate-middleware.js') -- to be built
+// const authRouter = require('./routes/auth/auth-router.js')
+// const usersRouter = require('./routes/users/users-router')
+// const valuesRouter = require('./routes/values/values-router.js')
 
 const server = express()
 

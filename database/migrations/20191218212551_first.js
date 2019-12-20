@@ -4,7 +4,7 @@ exports.up = function(knex) {
         knex.schema
             .createTable('users', users => {
                 users.increments()
-                users.string('name', 60)
+                users.string('name', 60).notNullable()
                 users
                     .string('username', 180)
                     .notNullable()
