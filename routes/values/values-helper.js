@@ -11,7 +11,7 @@ function getValById(id) {
 
 function addVal(body){
     return db
-        .insert({body})
+        .insert(body)
         .into('values')
         .then(res => {
             const id = res[0]
@@ -23,7 +23,7 @@ function addVal(body){
 function updVal(id, body) {
     return db('values')
         .where({id})
-        .update({body})
+        .update(body)
         .then(res => {
             const id = res[0]
             return db('values')
