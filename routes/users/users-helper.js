@@ -11,7 +11,7 @@ function getUserById(id) {
 
 function addUser(body){
     return db
-        .insert({body})
+        .insert(body)
         .into('users')
         .then(res => {
             const id = res[0]
@@ -23,7 +23,7 @@ function addUser(body){
 function updUser(id, body) {
     return db('users')
         .where({id})
-        .update({body})
+        .update(body)
         .then(res => {
             const id = res[0]
             return db('users')
