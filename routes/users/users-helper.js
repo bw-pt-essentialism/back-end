@@ -4,6 +4,12 @@ function getUsers() {
     return db('users')
 }
 
+function getUserBy(key) {
+    return db('users')
+        .where(key)
+        .first()
+}
+
 function getUserById(id) {
     return db('users')
         .where({id})
@@ -25,23 +31,22 @@ function updUser(id, body) {
         .where({id})
         .update(body)
         .then(res => {
-            const id = res[0]
             return db('users')
                 .where({id})
         })
 }
 
-function delUser(id) {
-    db('users')
+async function delUser(id) {
+    await db('users')
         .where({id})
         .del()
-        .then(res => {
-            return db('users')
-        })
+        return db('users')
+        
 }
 
 module.exports = {
     getUserById,
+    getUserBy,
     getUsers,
     addUser,
     updUser,
