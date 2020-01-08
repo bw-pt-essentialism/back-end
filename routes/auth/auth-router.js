@@ -37,7 +37,7 @@ function generateToken(user) {
     }
 
     const options = {
-        expiresIn: '120s'
+        expiresIn: '2d'
     }
 
     return jwt.sign(payload, 'banananutmuffin?!1/', options)
