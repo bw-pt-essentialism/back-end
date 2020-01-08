@@ -12,7 +12,7 @@ router.post('/register', (req, res) => {
 
     db.addUser(creds)
         .then(id => {
-            res.status(201).json(id)
+            res.status(201).json(id.id)
         })
         .catch(err => {
             res.status(500).json({message: 'Error adding new user to the database', err})
