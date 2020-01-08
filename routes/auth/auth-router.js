@@ -26,7 +26,12 @@ router.post('./login', (req, res) => {
             if(user && bcjs.compareSync(password, user.password)) {
                 let token = generateToken(user)
                 res.status(200).json({message: `Welcome ${username}!`, token: token})
+            } else {
+                res.status(401).json({ message: 'Invalid credentials'})
             }
+        })
+        .catch(err => {
+            res.status(500).json({ message: "Error posting credentials to the database"})
         })
 })
 
@@ -42,3 +47,5 @@ function generateToken(user) {
 
     return jwt.sign(payload, 'banananutmuffin?!1/', options)
 }
+
+module.exports = router
