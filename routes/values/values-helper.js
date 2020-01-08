@@ -4,6 +4,12 @@ function getVals() {
     return db('values')
 }
 
+function getValsBy(key) {
+    return db('values')
+        .where(key)
+        .first()
+}
+
 function getValById(id) {
     return db('values')
         .where({id})
@@ -25,23 +31,22 @@ function updVal(id, body) {
         .where({id})
         .update(body)
         .then(res => {
-            const id = res[0]
             return db('values')
                 .where({id})
         })
 }
 
-function delVal(id) {
-    db('values')
+async function delVal(id) {
+    await db('values')
         .where({id})
         .del()
-        .then(res => {
-            return db('values')
-        })
+        return db('values')
+        
 }
 
 module.exports = {
     getValById,
+    getValsBy,
     getVals,
     addVal,
     updVal,
