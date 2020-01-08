@@ -2,7 +2,7 @@ const db = require('../users/users-helper')
 const bcjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const router = require('expres').Router()
+const router = require('express').Router()
 
 router.post('/register', (req, res) => {
     const creds = req.body;
@@ -19,7 +19,7 @@ router.post('/register', (req, res) => {
         })
 })
 
-router.post('./login', (req, res) => {
+router.post('/login', (req, res) => {
     const { username, password } = req.body
     db.getUserBy({username})
         .then(user => {
