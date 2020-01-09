@@ -3,8 +3,7 @@ const db = require('../../database/dbConfig.js')
 function getProjectList(id) {
     return db.select(
         'users.username',
-        'projects.name',
-        'projects.description'
+        'projects.*'
     )
     .from('users')
     .join('projects', 'projects.user_id', 'users.id')
@@ -16,9 +15,8 @@ function addProject(body) {
     .insert(body)
     .into('projects')
     .then(res => {
-        const proj = res[0]
         return db('projects')
-            .where({proj})
+            .where({res})
     })
 }
 
