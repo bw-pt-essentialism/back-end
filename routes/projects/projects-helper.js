@@ -16,9 +16,11 @@ function addProject(body) {
     .into('projects')
     .then(res => {
         return db('projects')
-            .where({res})
+            .where({id: res[0]})
     })
 }
+
+
 
 module.exports = {
     getProjectList,
