@@ -20,9 +20,25 @@ function addProject(body) {
     })
 }
 
+function updProject(id, body) {
+    return db('projects')
+        .where({id})
+        .update(body)
+        .then(res => {
+            return db('users')
+                .where({id})
+        })
+}
 
+async function delProject(id) {
+    await db('projects')
+        .where({id})
+        .del()
+}
 
 module.exports = {
     getProjectList,
-    addProject
+    addProject,
+    updProject,
+    delProject
 }
