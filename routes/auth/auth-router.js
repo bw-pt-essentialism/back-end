@@ -12,7 +12,7 @@ router.post('/register', (req, res) => {
 
     db.addUser(creds)
         .then(id => {
-            res.status(201).json()
+            res.status(201).json({message: "New user created", id: id[0].id})
         })
         .catch(err => {
             res.status(500).json({message: 'Error adding new user to the database', err})
@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
         .then(user => {
             if(user && bcjs.compareSync(password, user.password)) {
                 let token = generateToken(user)
-                res.status(200).json({message: `Welcome ${username}!`, token: token})
+                res.status(200).json({message: `Welcome ${username}!`, token: token, id: user.id})
             } else {
                 res.status(401).json({ message: 'Invalid credentials'})
             }
