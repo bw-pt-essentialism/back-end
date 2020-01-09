@@ -29,4 +29,29 @@ router.post('/', (req, res) => {
         })
 })
 
+router.put('/:id', (req, res) => {
+    const id = req.params.id
+    const body = req.body
+
+    Project.updProject(id, body)
+        .then(update => {
+            res.status(200).json(update)
+        })
+        .catch(err => {
+            res.status(500).json({message: 'Error updating the user', err})
+        })
+})
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id
+
+    Project.delProject(id)
+        .then(deleted => {
+            res.status(200).json({message: 'Project successfully deleted'})
+        })
+        .catch(err => {
+            res.status(500).json({message: 'Error deleting the project', err})
+        })
+})
+
 module.exports = router

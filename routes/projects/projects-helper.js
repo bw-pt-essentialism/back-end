@@ -25,7 +25,7 @@ function updProject(id, body) {
         .where({id})
         .update(body)
         .then(res => {
-            return db('users')
+            return db('projects')
                 .where({id})
         })
 }
