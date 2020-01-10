@@ -11,6 +11,10 @@ describe('project helpers', () => {
             expect(projects).toHaveLength(2)
         })
 
+        beforeEach(async () => {
+            await db('projects').truncate()
+        })
+
         it('should return the project inserted', async () => {
             let val1 = await Proj.addProject({ name: 'truth'})
             expect(val1.name).toBe('truth')
@@ -48,6 +52,9 @@ describe('project helpers', () => {
             await Proj.updProject(val1.id, body)
             const valDB = await db('projects').first()
             expect(valDB.name).toBe('mom')
+        })
+        beforeEach(async () => {
+            await db('projects').truncate()
         })
     })
 })

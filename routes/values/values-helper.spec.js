@@ -49,5 +49,8 @@ describe('value helpers', () => {
             const valDB = await db('values').first()
             expect(valDB.name).toBe('mom')
         })
+        beforeEach(async () => {
+            await db('values').truncate()
+        })
     })
 })
