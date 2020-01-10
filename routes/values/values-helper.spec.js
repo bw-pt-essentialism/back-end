@@ -19,8 +19,35 @@ describe('value helpers', () => {
             expect(val2.name).toBe('virtue')
         })
 
+        
         beforeEach(async () => {
             await db('values').truncate()
+        })
+    })
+
+    describe('delete', () => {
+
+        it('deletes the value from the database', async () => {
+            let val1 = await Vals.addVal({name: 'deborah'})            
+
+            await Vals.delVal(val1.id)
+            const valDB = await db('values')
+            expect(valDB).toHaveLength(0)
+        })
+        
+        beforeEach(async () => {
+            await db('values').truncate()
+        })
+    })
+
+    describe('update', () => {
+        it('updates a value in the database', async () => {
+            let val1 = await Vals.addVal({name: 'seriousness'})
+            let body = {name: 'mom'}
+
+            await Vals.updVal(val1.id, body)
+            const valDB = await db('values').first()
+            expect(valDB.name).toBe('mom')
         })
     })
 })

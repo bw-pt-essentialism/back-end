@@ -34,6 +34,7 @@ function updVal(id, body) {
         .then(res => {
             return db('values')
                 .where({id})
+                .first()
         })
 }
 
