@@ -23,6 +23,7 @@ function addVal(body){
             const id = res[0]
             return db('values')
                 .where({id})
+                .first()
         })
 }
 
