@@ -17,6 +17,7 @@ function addProject(body) {
     .then(res => {
         return db('projects')
             .where({id: res[0]})
+            .first()
     })
 }
 
@@ -27,6 +28,7 @@ function updProject(id, body) {
         .then(res => {
             return db('projects')
                 .where({id})
+                .first()
         })
 }
 

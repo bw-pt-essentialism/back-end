@@ -23,6 +23,7 @@ function addVal(body){
             const id = res[0]
             return db('values')
                 .where({id})
+                .first()
         })
 }
 
@@ -33,6 +34,7 @@ function updVal(id, body) {
         .then(res => {
             return db('values')
                 .where({id})
+                .first()
         })
 }
 
